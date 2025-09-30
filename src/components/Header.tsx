@@ -2,11 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 
-interface HeaderProps {
-  isOverlay?: boolean;
-}
-
-const Header = ({ isOverlay = false }: HeaderProps) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
@@ -57,7 +53,7 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
   };
 
   return (
-    <header className={`${isOverlay ? 'absolute' : 'sticky'} top-0 z-50 w-full ${isOverlay ? 'bg-transparent' : 'bg-background/95 backdrop-blur-sm border-b border-border'}`}>
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-border shadow-sm">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -66,10 +62,10 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
               <span className="text-primary-foreground font-bold text-xl">BMA</span>
             </div>
             <div className="hidden md:block">
-              <div className={`text-lg font-bold font-montserrat ${isOverlay ? 'text-white' : 'text-primary'}`}>
+              <div className="text-lg font-bold font-montserrat text-primary">
                 Bell Mount & Associates
               </div>
-              <div className={`text-xs ${isOverlay ? 'text-white/80' : 'text-muted-foreground'}`}>
+              <div className="text-xs text-muted-foreground">
                 Certified Public Accountants
               </div>
             </div>
@@ -81,10 +77,10 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
               <div key={item.name} className="relative group">
                 <Link
                   to={item.href}
-                  className={`nav-link flex items-center space-x-1 ${
+                  className={`flex items-center space-x-1 font-medium text-[#0A2342] transition-all duration-300 relative ${
                     location.pathname === item.href 
-                      ? (isOverlay ? 'text-accent' : 'text-secondary')
-                      : (isOverlay ? 'text-white hover:text-accent' : '')
+                      ? 'text-[#FFD700]'
+                      : 'hover:text-[#0A2342] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FFD700] after:transition-all after:duration-300 hover:after:w-full'
                   }`}
                   onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
                   onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
@@ -96,7 +92,7 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
                 {/* Dropdown Menu */}
                 {item.dropdown && (
                   <div
-                    className={`nav-dropdown ${isOverlay ? 'bg-background/95 backdrop-blur-sm' : ''}`}
+                    className="absolute top-full left-0 mt-2 w-48 bg-white border border-border rounded-lg shadow-lg py-2 transition-all duration-200 z-50"
                     onMouseEnter={() => setActiveDropdown(item.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                     style={{
@@ -108,7 +104,7 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
                       <button
                         key={dropdownItem.name}
                         onClick={(e) => handleServiceClick(e, dropdownItem)}
-                        className="w-full text-left block px-4 py-2 text-sm nav-link hover:bg-secondary/10 hover:text-gold transition-colors duration-300"
+                        className="w-full text-left block px-4 py-2 text-sm text-[#0A2342] hover:bg-[#FFD700]/10 hover:text-[#FFD700] transition-colors duration-300"
                       >
                         {dropdownItem.name}
                       </button>
@@ -123,7 +119,7 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               to="/contact"
-              className="btn-accent flex items-center space-x-2"
+              className="bg-[#FFD700] text-[#0A2342] px-6 py-3 rounded-lg font-bold flex items-center space-x-2 transition-all duration-300 hover:shadow-lg hover:shadow-[#FFD700]/40 hover:scale-105"
             >
               <Phone className="w-4 h-4" />
               <span>Let's Talk</span>
@@ -133,23 +129,23 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${isOverlay ? 'hover:bg-white/10' : 'hover:bg-secondary/10'}`}
+            className="lg:hidden p-2 rounded-lg transition-colors hover:bg-secondary/10"
           >
-            {isMenuOpen ? <X className={`w-6 h-6 ${isOverlay ? 'text-white' : ''}`} /> : <Menu className={`w-6 h-6 ${isOverlay ? 'text-white' : ''}`} />}
+            {isMenuOpen ? <X className="w-6 h-6 text-[#0A2342]" /> : <Menu className="w-6 h-6 text-[#0A2342]" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className={`lg:hidden py-4 border-t ${isOverlay ? 'border-white/20 bg-background/95 backdrop-blur-sm' : 'border-border'}`}>
+          <div className="lg:hidden py-4 border-t border-border bg-white">
             <nav className="space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
                   <div className="flex items-center justify-between">
                     <Link
                       to={item.href}
-                      className={`block py-2 nav-link ${
-                        location.pathname === item.href ? 'text-secondary' : ''
+                      className={`block py-2 font-medium ${
+                        location.pathname === item.href ? 'text-[#FFD700]' : 'text-[#0A2342]'
                       }`}
                       onClick={() => !item.dropdown && setIsMenuOpen(false)}
                     >
@@ -176,7 +172,7 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
                         <button
                           key={dropdownItem.name}
                           onClick={(e) => handleServiceClick(e, dropdownItem)}
-                          className="w-full text-left block py-2 text-sm nav-link hover:text-gold transition-colors duration-300"
+                          className="w-full text-left block py-2 text-sm text-[#0A2342] hover:text-[#FFD700] transition-colors duration-300"
                         >
                           {dropdownItem.name}
                         </button>
@@ -190,7 +186,7 @@ const Header = ({ isOverlay = false }: HeaderProps) => {
             <div className="pt-4 border-t border-border mt-4">
               <Link
                 to="/contact"
-                className="btn-accent flex items-center justify-center space-x-2 w-full"
+                className="bg-[#FFD700] text-[#0A2342] px-6 py-3 rounded-lg font-bold flex items-center justify-center space-x-2 w-full transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Phone className="w-4 h-4" />

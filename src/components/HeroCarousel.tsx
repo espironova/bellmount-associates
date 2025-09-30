@@ -9,72 +9,78 @@ import {
 } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import { type CarouselApi } from '@/components/ui/carousel';
-import slide1 from '@/assets/slide_1.png';
-import slide2 from '@/assets/slide_2.png';
+import { Search, FileText, TrendingUp, Shield } from 'lucide-react';
+import slide1 from '@/assets/slide-1-nairobi.jpg';
+import slide2 from '@/assets/slide-2-trust.webp';
 import slide3 from '@/assets/slide_3.png';
-import slide4 from '@/assets/slide_4.png';
+import slide4 from '@/assets/slide-4-forensic.png';
 
 interface SlideData {
   id: number;
   miniTagline: string;
   headline: string;
   subtext: string;
+  serviceIcon: any;
+  serviceLabel: string;
   cta: {
     text: string;
     link: string;
   };
   backgroundImage: string;
-  animationClass: string;
 }
 
 const slides: SlideData[] = [
   {
     id: 1,
     miniTagline: "OUR PROMISE",
-    headline: "Dissecting Numbers, Uncovering Profits",
-    subtext: "With over 18 years of expertise in audit, tax, and advisory, we transform financial complexity into growth opportunities.",
+    headline: "Disentangling Numbers, Uncovering Profits",
+    subtext: "With 18+ years of expertise in audit, tax, and advisory, we transform financial complexity into growth opportunities.",
+    serviceIcon: Search,
+    serviceLabel: "Audit & Assurance",
     cta: {
       text: "Discover Our Services",
       link: "/services"
     },
     backgroundImage: slide1,
-    animationClass: "slide-1-animation"
   },
   {
     id: 2,
     miniTagline: "OUR INTEGRITY",
     headline: "Building Trust, Strengthening Governance",
-    subtext: "Our governance audits and compliance reviews safeguard your organization's integrity and long-term success.",
+    subtext: "Our governance audits and compliance reviews safeguard integrity and ensure sustainable growth.",
+    serviceIcon: TrendingUp,
+    serviceLabel: "Business Advisory",
     cta: {
       text: "Talk to an Expert",
       link: "/contact"
     },
     backgroundImage: slide2,
-    animationClass: "slide-1-animation"
   },
   {
     id: 3,
     miniTagline: "OUR PEOPLE",
     headline: "Experienced Minds, Lasting Impact",
-    subtext: "Our partners and managers bring decades of experience in audits, tax, and advisory — trusted by corporates, NGOs, and SMEs alike.",
+    subtext: "Led by partners and managers, we deliver trusted insights across corporates, NGOs, and SMEs.",
+    serviceIcon: FileText,
+    serviceLabel: "Tax Advisory",
     cta: {
-      text: "Meet Our Experts",
+      text: "Meet Our Team",
       link: "/team"
     },
     backgroundImage: slide3,
-    animationClass: "slide-1-animation"
   },
   {
     id: 4,
     miniTagline: "OUR FUTURE",
     headline: "Harnessing Technology for Smarter Decisions",
-    subtext: "From IT and forensic audits to system reviews, we integrate technology to ensure compliance, efficiency, and resilience.",
+    subtext: "From forensic reviews to IT audits, we help organizations stay secure, efficient, and resilient.",
+    serviceIcon: Shield,
+    serviceLabel: "Forensic & IT Audits",
     cta: {
       text: "Book a Consultation",
       link: "/contact"
     },
     backgroundImage: slide4,
-    animationClass: "slide-1-animation"
   }
 ];
 
@@ -109,7 +115,7 @@ const HeroCarousel = () => {
       } else {
         api.scrollTo(0);
       }
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [api, isAutoPlaying]);
@@ -128,77 +134,113 @@ const HeroCarousel = () => {
         }}
       >
         <CarouselContent>
-          {slides.map((slide, index) => (
-            <CarouselItem key={slide.id}>
-              <div 
-                className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                style={{
-                  backgroundImage: `linear-gradient(rgba(0, 51, 102, 0.7), rgba(74, 144, 226, 0.5)), url(${slide.backgroundImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                {/* Decorative Elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div className="absolute -top-40 -right-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
-                  <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
-                </div>
-
-                <div className="container-custom relative z-10">
+          {slides.map((slide) => {
+            const ServiceIcon = slide.serviceIcon;
+            return (
+              <CarouselItem key={slide.id}>
                 <div 
-                  key={`slide-${slide.id}-${animationKey}`}
-                  className={`max-w-4xl mx-auto text-center ${slide.animationClass}`}
+                  className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(10, 35, 66, 0.75), rgba(10, 35, 66, 0.85)), url(${slide.backgroundImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
                 >
-                    {/* Mini Tagline */}
-                    <div className="mini-tagline text-accent font-medium text-sm md:text-base mb-4 font-montserrat uppercase tracking-[0.2em]">
-                      {slide.miniTagline}
-                    </div>
-                    
-                    {/* Headline */}
-                    <h1 className="headline text-hero mb-6 font-montserrat text-primary-foreground font-bold">
-                      {slide.headline}
-                    </h1>
-                    
-                    {/* Subtext */}
-                    <p className="subtext text-lead mb-8 max-w-3xl mx-auto text-primary-foreground/90">
-                      {slide.subtext}
-                    </p>
-                    
-                    {/* CTA Button */}
-                    <div className="cta-button">
-                      <Button 
-                        asChild 
-                        size="lg" 
-                        className="btn-hero-cta font-semibold px-8 py-4"
+                  <div className="container-custom relative z-10">
+                    <div 
+                      key={`slide-${slide.id}-${animationKey}`}
+                      className="max-w-4xl mx-auto text-center space-y-8"
+                    >
+                      {/* Mini Tagline */}
+                      <div 
+                        className="text-[#FFD700] font-medium text-sm md:text-base font-montserrat uppercase tracking-[0.3em]"
+                        style={{
+                          opacity: 0,
+                          animation: 'fadeInBottom 0.6s ease-out 0.2s forwards'
+                        }}
                       >
-                        <Link to={slide.cta.link}>
-                          {slide.cta.text}
-                        </Link>
-                      </Button>
+                        {slide.miniTagline}
+                      </div>
+                      
+                      {/* Headline */}
+                      <h1 
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold font-playfair text-white leading-tight"
+                        style={{
+                          opacity: 0,
+                          animation: 'slideInUp 0.8s ease-out 0.5s forwards'
+                        }}
+                      >
+                        {slide.headline}
+                      </h1>
+                      
+                      {/* Subtext */}
+                      <p 
+                        className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+                        style={{
+                          opacity: 0,
+                          animation: 'fadeInUp 0.6s ease-out 0.9s forwards'
+                        }}
+                      >
+                        {slide.subtext}
+                      </p>
+                      
+                      {/* CTA Button */}
+                      <div 
+                        style={{
+                          opacity: 0,
+                          animation: 'fadeInUp 0.6s ease-out 1.3s forwards'
+                        }}
+                      >
+                        <Button 
+                          asChild 
+                          size="lg" 
+                          className="bg-[#FFD700] text-[#0A2342] hover:bg-[#FFD700]/90 font-bold px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-[#FFD700]/40 hover:scale-105 transition-all duration-300"
+                        >
+                          <Link to={slide.cta.link}>
+                            {slide.cta.text}
+                          </Link>
+                        </Button>
+                      </div>
+
+                      {/* Service Icon */}
+                      <div 
+                        className="flex justify-center pt-8"
+                        style={{
+                          opacity: 0,
+                          animation: 'floatUp 0.8s ease-out 1.7s forwards'
+                        }}
+                      >
+                        <div className="flex flex-col items-center space-y-2">
+                          <div className="w-16 h-16 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/40 shadow-lg shadow-[#FFD700]/20">
+                            <ServiceIcon className="w-8 h-8 text-[#FFD700]" />
+                          </div>
+                          <span className="text-white/80 text-sm font-medium">{slide.serviceLabel}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </CarouselItem>
-          ))}
+              </CarouselItem>
+            );
+          })}
         </CarouselContent>
 
         {/* Navigation */}
-        <CarouselPrevious className="left-8 bg-background/20 border-primary-foreground/20 text-primary-foreground hover:bg-background/40" />
-        <CarouselNext className="right-8 bg-background/20 border-primary-foreground/20 text-primary-foreground hover:bg-background/40" />
+        <CarouselPrevious className="left-8 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300" />
+        <CarouselNext className="right-8 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300" />
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
           {Array.from({ length: count }).map((_, index) => (
             <button
               key={index}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`transition-all duration-300 rounded-full ${
                 index === current - 1 
-                  ? 'bg-accent scale-125' 
-                  : 'bg-primary-foreground/40 hover:bg-primary-foreground/60'
+                  ? 'w-8 h-3 bg-[#FFD700]' 
+                  : 'w-3 h-3 bg-white/40 hover:bg-white/60'
               }`}
               onClick={() => api?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -206,6 +248,52 @@ const HeroCarousel = () => {
           ))}
         </div>
       </Carousel>
+
+      <style>{`
+        @keyframes fadeInBottom {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes floatUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };
