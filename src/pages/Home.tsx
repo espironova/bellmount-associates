@@ -77,7 +77,7 @@ const Home = () => {
       <HeroCarousel />
 
       {/* Professional Excellence Section */}
-      <section className="section-padding">
+      <section className="py-16 md:py-20">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
@@ -118,7 +118,7 @@ const Home = () => {
       </section>
 
       {/* Our Core Services */}
-      <section className="section-padding bg-secondary/5">
+      <section className="py-20 bg-secondary/5">
         <div className="container-custom">
           <div className="text-center mb-16 fade-in">
             <h2 className="text-section-title-with-underline">
@@ -130,7 +130,7 @@ const Home = () => {
           </div>
           
           {/* 3-Column Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-12">
             {services.map((service, index) => (
               <div key={index} className="animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
                 <ServiceCard {...service} />
