@@ -17,21 +17,21 @@ const Team = () => {
 
   const leadership = [
     {
-      name: 'Wangari Gathara',
-      position: 'Managing Partner',
-      qualifications: ['MBA', 'CPA(K)', 'CISA'],
-      experience: '18+ years of experience in audit, tax, and advisory',
-      tagline: '18+ years of experience in audit, tax, and advisory',
-      bio: 'Specialist in financial audits, tax planning, and donor-funded project reviews. Guides organizations across corporate, NGO, and public sectors with expertise in strategic management and risk assessment.',
-      image: placeholderPortrait,
-    },
-    {
       name: 'Steve Muru',
-      position: 'Partner',
+      position: 'Managing Partner',
       qualifications: ['CPA(K)', 'BCom', 'ICPAK Member'],
       experience: '15+ years in Audit, Tax & Advisory services',
       tagline: 'Expert in business advisory and governance audits',
       bio: 'Advises corporates and NGOs on strategy, governance, and compliance. Focuses on risk management and regulatory frameworks with extensive experience in business consulting.',
+      image: placeholderPortrait,
+    },
+    {
+      name: 'Wangari Gathara',
+      position: 'Partner',
+      qualifications: ['MBA', 'CPA(K)', 'CISA'],
+      experience: '18+ years of experience in audit, tax, and advisory',
+      tagline: '18+ years of experience in audit, tax, and advisory',
+      bio: 'Specialist in financial audits, tax planning, and donor-funded project reviews. Guides organizations across corporate, NGO, and public sectors with expertise in strategic management and risk assessment.',
     },
     {
       name: 'Julius',

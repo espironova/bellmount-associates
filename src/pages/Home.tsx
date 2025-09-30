@@ -4,7 +4,7 @@ import HeroCarousel from '../components/HeroCarousel';
 import ServiceCard from '../components/ServiceCard';
 import ClientCarousel from '../components/ClientCarousel';
 import { useCountUp } from '../hooks/useCountUp';
-import professionalOffice from '../assets/professional-office-building.jpg';
+import nairobiOverview from '../assets/nairobi-overview.jpg';
 
 const Home = () => {
   const services = [
@@ -23,15 +23,8 @@ const Home = () => {
       color: 'gold' as const,
     },
     {
-      icon: Lightbulb,
-      title: 'Business Advisory',
-      description: 'Tailored strategies and governance frameworks that improve performance, resilience, and sustainable growth.',
-      link: '/services/advisory',
-      color: 'gold' as const,
-    },
-    {
       icon: Laptop,
-      title: 'Technology & Forensics',
+      title: 'Forensic & IT Audits',
       description: 'IT audits, forensic reviews, and system evaluations that ensure compliance, security, and smarter decision-making.',
       link: '/services/technology',
       color: 'gold' as const,
@@ -42,7 +35,7 @@ const Home = () => {
     { number: 18, suffix: '+', label: 'Years of Experience', icon: Clock },
     { number: 100, suffix: '+', label: 'Clients Served', icon: Handshake },
     { number: 12, suffix: '+', label: 'Sectors Covered', icon: Globe },
-    { number: 4, suffix: '', label: 'Core Practice Areas', icon: Building },
+    { number: 3, suffix: '', label: 'Core Practice Areas', icon: Building },
   ];
 
   const CountingStats = () => {
@@ -113,8 +106,8 @@ const Home = () => {
             <div className="lg:order-2">
               <div className="relative">
                 <img 
-                  src={professionalOffice} 
-                  alt="Professional office building representing Bell Mount & Associates excellence"
+                  src={nairobiOverview} 
+                  alt="Nairobi skyline representing Bell Mount & Associates local expertise"
                   className="w-full h-[400px] object-cover rounded-xl shadow-[var(--shadow-professional)]"
                 />
                 <div className="absolute inset-0 bg-primary/10 rounded-xl"></div>
@@ -132,12 +125,12 @@ const Home = () => {
               Our Core Services
             </h2>
             <p className="text-lead max-w-3xl mx-auto mt-6">
-              We provide tailored solutions in Audit, Tax, Advisory, and Technology.
+              Tailored audit, tax, and forensic solutions that build trust and resilience.
             </p>
           </div>
           
-          {/* Mobile-First Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto mb-8 sm:mb-12">
+          {/* 3-Column Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-8 sm:mb-12">
             {services.map((service, index) => (
               <div key={index} className="animate-fade-in-up" style={{ animationDelay: `${index * 150}ms` }}>
                 <ServiceCard {...service} />
@@ -173,13 +166,16 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Managing Partner's Message - Smaller */}
+      {/* Managing Partner's Message */}
       <section className="py-16 bg-background border-t border-gold/20">
         <div className="container-custom">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-playfair text-primary mb-4">
+          <div className="text-center mb-6">
+            <h3 className="text-3xl md:text-4xl font-playfair text-primary mb-2">
+              Steve Muru
+            </h3>
+            <p className="text-lg text-gold font-medium">
               Message from Our Managing Partner
-            </h2>
+            </p>
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
@@ -187,7 +183,7 @@ const Home = () => {
               "At Bell-Mount & Associates, we believe every number tells a story. Our role is to translate that story into insight, growth, and resilience for our clients."
             </blockquote>
             <cite className="block text-base font-medium text-primary font-montserrat">
-              — Maureen Wangari, Managing Partner
+              — Steve Muru, Managing Partner
             </cite>
           </div>
         </div>

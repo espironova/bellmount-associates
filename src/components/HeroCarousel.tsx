@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import { type CarouselApi } from '@/components/ui/carousel';
-import { Search, FileText, TrendingUp, Shield } from 'lucide-react';
+import { Search, FileText, Shield } from 'lucide-react';
 import slide1 from '@/assets/slide-1-nairobi.jpg';
 import slide2 from '@/assets/slide-2-trust.webp';
 import slide3 from '@/assets/slide_3.png';
@@ -48,8 +48,8 @@ const slides: SlideData[] = [
     miniTagline: "OUR INTEGRITY",
     headline: "Building Trust, Strengthening Governance",
     subtext: "Our governance audits and compliance reviews safeguard integrity and ensure sustainable growth.",
-    serviceIcon: TrendingUp,
-    serviceLabel: "Business Advisory",
+    serviceIcon: FileText,
+    serviceLabel: "Tax Advisory",
     cta: {
       text: "Talk to an Expert",
       link: "/contact"
@@ -61,8 +61,8 @@ const slides: SlideData[] = [
     miniTagline: "OUR PEOPLE",
     headline: "Experienced Minds, Lasting Impact",
     subtext: "Led by partners and managers, we deliver trusted insights across corporates, NGOs, and SMEs.",
-    serviceIcon: FileText,
-    serviceLabel: "Tax Advisory",
+    serviceIcon: Search,
+    serviceLabel: "Audit & Assurance",
     cta: {
       text: "Meet Our Team",
       link: "/team"
@@ -205,7 +205,7 @@ const HeroCarousel = () => {
                         </Button>
                       </div>
 
-                      {/* Service Icon */}
+                      {/* Service Icons Row */}
                       <div 
                         className="flex justify-center pt-8"
                         style={{
@@ -213,11 +213,25 @@ const HeroCarousel = () => {
                           animation: 'floatUp 0.8s ease-out 1.7s forwards'
                         }}
                       >
-                        <div className="flex flex-col items-center space-y-2">
-                          <div className="w-16 h-16 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/40 shadow-lg shadow-[#FFD700]/20">
-                            <ServiceIcon className="w-8 h-8 text-[#FFD700]" />
+                        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
+                          <div className="flex flex-col items-center space-y-2">
+                            <div className="w-16 h-16 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/40 shadow-lg shadow-[#FFD700]/20">
+                              <Search className="w-8 h-8 text-[#FFD700]" />
+                            </div>
+                            <span className="text-white/80 text-sm font-medium">Audit & Assurance</span>
                           </div>
-                          <span className="text-white/80 text-sm font-medium">{slide.serviceLabel}</span>
+                          <div className="flex flex-col items-center space-y-2">
+                            <div className="w-16 h-16 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/40 shadow-lg shadow-[#FFD700]/20">
+                              <FileText className="w-8 h-8 text-[#FFD700]" />
+                            </div>
+                            <span className="text-white/80 text-sm font-medium">Tax Advisory</span>
+                          </div>
+                          <div className="flex flex-col items-center space-y-2">
+                            <div className="w-16 h-16 bg-[#FFD700]/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-[#FFD700]/40 shadow-lg shadow-[#FFD700]/20">
+                              <Shield className="w-8 h-8 text-[#FFD700]" />
+                            </div>
+                            <span className="text-white/80 text-sm font-medium">Forensic & IT Audits</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -232,20 +246,12 @@ const HeroCarousel = () => {
         <CarouselPrevious className="left-8 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300" />
         <CarouselNext className="right-8 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300" />
 
-        {/* Dots Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
-          {Array.from({ length: count }).map((_, index) => (
-            <button
-              key={index}
-              className={`transition-all duration-300 rounded-full ${
-                index === current - 1 
-                  ? 'w-8 h-3 bg-[#FFD700]' 
-                  : 'w-3 h-3 bg-white/40 hover:bg-white/60'
-              }`}
-              onClick={() => api?.scrollTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+        {/* Progress Bar */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-white/20 rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-[#FFD700] transition-all duration-300 ease-out rounded-full"
+            style={{ width: `${((current) / count) * 100}%` }}
+          />
         </div>
       </Carousel>
 

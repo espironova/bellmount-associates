@@ -28,7 +28,7 @@ const About = () => {
 
   const leadership = [
     {
-      name: 'Wangari',
+      name: 'Steve Muru',
       role: 'Managing Partner',
       quote: 'We are driven by integrity and committed to helping businesses thrive.',
       image: teamSilhouettes
