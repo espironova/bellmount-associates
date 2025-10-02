@@ -24,7 +24,7 @@ interface Industry {
 }
 
 interface IndustriesSectionProps {
-  variant?: 'about' | 'services';
+  variant?: 'about' | 'services' | 'about-simple';
   title?: string;
   subtitle?: string;
 }
@@ -75,6 +75,51 @@ const IndustriesSection: React.FC<IndustriesSectionProps> = ({
       sectors: ['Fintech', 'Software Companies', 'Telecommunications', 'Professional Services']
     }
   ];
+
+  // Simple two-column layout for about-simple variant
+  if (variant === 'about-simple') {
+    return (
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <div className="gold-accent-line mx-auto mb-8"></div>
+            <h2 className="text-section-title text-primary font-playfair mb-6">
+              {title}
+            </h2>
+            <p className="text-lead text-muted-foreground max-w-4xl mx-auto">
+              {subtitle}
+            </p>
+          </div>
+          
+          {/* Two Column Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {industries.map((industry, index) => (
+              <div
+                key={industry.name}
+                className="flex items-start space-x-4 p-6 bg-background border border-border rounded-2xl hover:border-gold/30 hover:shadow-lg transition-all duration-300 stagger-fade-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Icon - Left Aligned */}
+                <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0">
+                  <industry.icon className="w-6 h-6 text-gold" />
+                </div>
+                
+                {/* Content - Right Side */}
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-foreground font-montserrat mb-2">
+                    {industry.name}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    {industry.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={`section-padding ${variant === 'about' ? 'bg-background' : 'bg-gradient-to-br from-background via-muted/5 to-background'}`}>

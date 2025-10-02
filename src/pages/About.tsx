@@ -4,7 +4,6 @@ import ClientCarousel from '../components/ClientCarousel';
 import IndustriesSection from '../components/IndustriesSection';
 import nairobiSkyline from '../assets/nairobi-skyline-dusk.jpg';
 import boardroomImage from '../assets/modern-boardroom.jpg';
-import teamSilhouettes from '../assets/team-silhouettes.jpg';
 
 const About = () => {
   const missionVisionValues = [
@@ -26,14 +25,6 @@ const About = () => {
   ];
 
 
-  const leadership = [
-    {
-      name: 'Steve Muru',
-      role: 'Managing Partner',
-      quote: 'We are driven by integrity and committed to helping businesses thrive.',
-      image: teamSilhouettes
-    }
-  ];
 
   const accreditations = [
     'ICPAK (Institute of Certified Public Accountants of Kenya)',
@@ -123,52 +114,11 @@ const About = () => {
 
       {/* Who We Serve */}
       <IndustriesSection 
-        variant="about"
+        variant="about-simple"
         title="Who We Serve"
         subtitle="From global organizations to local enterprises, Bell-Mount delivers trusted solutions across diverse industries with specialized expertise and proven results."
       />
 
-      {/* Leadership Highlight */}
-      <section className="section-padding bg-muted/20">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <div className="gold-accent-line mx-auto mb-8"></div>
-            <h2 className="text-section-title text-primary font-playfair mb-6">
-              Leadership You Can Trust
-            </h2>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            {leadership.map((leader, index) => (
-              <div key={index} className="premium-card">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                  <div className="md:col-span-1">
-                    <div className="relative">
-                      <img
-                        src={leader.image}
-                        alt={`${leader.name} - ${leader.role}`}
-                        className="w-48 h-48 object-cover rounded-2xl mx-auto shadow-elegant"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent rounded-2xl"></div>
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 text-center md:text-left">
-                    <h3 className="text-2xl font-semibold text-primary font-playfair mb-2">
-                      {leader.name}
-                    </h3>
-                    <p className="text-gold font-medium mb-6">
-                      {leader.role}
-                    </p>
-                    <blockquote className="text-lg italic text-muted-foreground leading-relaxed">
-                      "{leader.quote}"
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Accreditations */}
       <section className="section-padding bg-background">
