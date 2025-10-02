@@ -120,7 +120,7 @@ const Home = () => {
       {/* Our Core Services */}
       <section className="py-20 bg-secondary/5">
         <div className="container-custom">
-          <div className="text-center mb-16 fade-in">
+          <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-section-title-with-underline">
               Our Core Services
             </h2>
@@ -139,7 +139,7 @@ const Home = () => {
           </div>
 
           {/* Book Consultation CTA */}
-          <div className="text-center fade-in-up">
+          <div className="text-center animate-fade-in-up">
             <Link
               to="/contact"
               className="btn-consultation-gold inline-flex items-center space-x-2"
