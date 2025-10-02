@@ -1,4 +1,7 @@
 import React from 'react';
+import icpakLogo from '../assets/icpak-logo.png';
+import kncciLogo from '../assets/kncci-logo.png';
+import kraLogo from '../assets/kra-logo.png';
 
 interface Partner {
   name: string;
@@ -10,33 +13,33 @@ const PartnershipsSection = () => {
   const partners: Partner[] = [
     {
       name: 'ICPAK',
-      logo: '🏛️',
+      logo: icpakLogo,
       description: 'Institute of Certified Public Accountants of Kenya'
     },
     {
       name: 'KNCCI',
-      logo: '🏢',
+      logo: kncciLogo,
       description: 'Kenya National Chamber of Commerce & Industry'
     },
     {
       name: 'KRA',
-      logo: '🦅',
+      logo: kraLogo,
       description: 'Kenya Revenue Authority'
     },
     // Duplicate for continuous scrolling effect
     {
       name: 'ICPAK',
-      logo: '🏛️',
+      logo: icpakLogo,
       description: 'Institute of Certified Public Accountants of Kenya'
     },
     {
       name: 'KNCCI',
-      logo: '🏢',
+      logo: kncciLogo,
       description: 'Kenya National Chamber of Commerce & Industry'
     },
     {
       name: 'KRA',
-      logo: '🦅',
+      logo: kraLogo,
       description: 'Kenya Revenue Authority'
     }
   ];
@@ -62,9 +65,13 @@ const PartnershipsSection = () => {
                 key={`${partner.name}-${index}`}
                 className="flex-shrink-0 w-72 h-40 mx-8 bg-background border border-border rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-gold/40 group cursor-pointer"
               >
-                <div className="text-center p-4">
-                  <div className="text-4xl mb-3">
-                    {partner.logo}
+                <div className="text-center p-6">
+                  <div className="mb-3 flex items-center justify-center h-16">
+                    <img 
+                      src={partner.logo} 
+                      alt={`${partner.name} logo`}
+                      className="max-h-full max-w-full object-contain"
+                    />
                   </div>
                   <div className="text-lg font-bold text-primary group-hover:text-gold transition-colors duration-300 font-montserrat mb-2">
                     {partner.name}

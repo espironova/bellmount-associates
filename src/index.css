@@ -608,7 +608,7 @@
 
 /* Partnerships Section Animation */
 .animate-slide-right-to-left {
-  animation: slide-right-to-left 20s linear infinite;
+  animation: slide-right-to-left 12s linear infinite;
 }
 
 .animate-slide-right-to-left:hover {
