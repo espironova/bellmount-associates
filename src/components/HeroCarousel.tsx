@@ -33,7 +33,7 @@ const slides: SlideData[] = [
   {
     id: 1,
     miniTagline: "OUR PROMISE",
-    headline: "Disentangling Numbers, Uncovering Profits",
+    headline: "Dissecting Numbers, Uncovering Profits",
     subtext: "With 18+ years of expertise in audit, tax, and advisory, we transform financial complexity into growth opportunities.",
     serviceIcon: Search,
     serviceLabel: "Audit & Assurance",
