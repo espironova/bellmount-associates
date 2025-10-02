@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Scale, Calculator, Lightbulb, Laptop, Clock, Handshake, Globe, Building, ArrowRight } from 'lucide-react';
 import HeroCarousel from '../components/HeroCarousel';
 import ServiceCard from '../components/ServiceCard';
-import ClientCarousel from '../components/ClientCarousel';
+import PartnershipsSection from '../components/PartnershipsSection';
 import { useCountUp } from '../hooks/useCountUp';
 import nairobiOverview from '../assets/nairobi-overview.jpg';
 
@@ -189,8 +189,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Our Valued Clients */}
-      <ClientCarousel />
+      {/* Partnerships and Affiliations */}
+      <PartnershipsSection />
     </div>
   );
 };

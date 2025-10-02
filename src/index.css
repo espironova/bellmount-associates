@@ -534,6 +534,15 @@
   }
 }
 
+@keyframes slide-right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* Enhanced Service Cards */
 .service-card-enhanced {
   @apply bg-white rounded-2xl p-8 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-professional)] transition-all duration-500;
@@ -595,4 +604,13 @@
   @apply inline-flex items-center px-8 py-4 bg-gold text-primary font-semibold rounded-xl;
   @apply hover:bg-gold/90 hover:shadow-xl hover:-translate-y-1;
   @apply transition-all duration-300 font-montserrat;
+}
+
+/* Partnerships Section Animation */
+.animate-slide-right-to-left {
+  animation: slide-right-to-left 20s linear infinite;
+}
+
+.animate-slide-right-to-left:hover {
+  animation-play-state: paused;
 }

@@ -115,7 +115,7 @@ const HeroCarousel = () => {
       } else {
         api.scrollTo(0);
       }
-    }, 3000);
+    }, 4500);
 
     return () => clearInterval(interval);
   }, [api, isAutoPlaying]);
