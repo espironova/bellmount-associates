@@ -9,7 +9,14 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
+    {
+      name: 'About Us',
+      href: '/about',
+      dropdown: [
+        { name: 'Who We Are', href: '/about?tab=who-we-are' },
+        { name: 'Our Leadership', href: '/about?tab=leadership' },
+      ],
+    },
     {
       name: 'Services',
       href: '/services',
@@ -101,13 +108,27 @@ const Header = () => {
                     }}
                   >
                     {item.dropdown.map((dropdownItem) => (
-                      <button
-                        key={dropdownItem.name}
-                        onClick={(e) => handleServiceClick(e, dropdownItem)}
-                        className="w-full text-left block px-4 py-2 text-sm text-[#0A2342] hover:bg-[#FFD700]/10 hover:text-[#FFD700] transition-colors duration-300"
-                      >
-                        {dropdownItem.name}
-                      </button>
+                      dropdownItem.section ? (
+                        <button
+                          key={dropdownItem.name}
+                          onClick={(e) => handleServiceClick(e, dropdownItem)}
+                          className="w-full text-left block px-4 py-2 text-sm text-[#0A2342] hover:bg-[#FFD700]/10 hover:text-[#FFD700] transition-colors duration-300"
+                        >
+                          {dropdownItem.name}
+                        </button>
+                      ) : (
+                        <Link
+                          key={dropdownItem.name}
+                          to={dropdownItem.href}
+                          className="block px-4 py-2 text-sm text-[#0A2342] hover:bg-[#FFD700]/10 hover:text-[#FFD700] transition-colors duration-300"
+                          onClick={() => {
+                            setActiveDropdown(null);
+                            setIsMenuOpen(false);
+                          }}
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      )
                     ))}
                   </div>
                 )}
@@ -169,13 +190,27 @@ const Header = () => {
                   {item.dropdown && activeDropdown === item.name && (
                     <div className="pl-4 space-y-2">
                       {item.dropdown.map((dropdownItem) => (
-                        <button
-                          key={dropdownItem.name}
-                          onClick={(e) => handleServiceClick(e, dropdownItem)}
-                          className="w-full text-left block py-2 text-sm text-[#0A2342] hover:text-[#FFD700] transition-colors duration-300"
-                        >
-                          {dropdownItem.name}
-                        </button>
+                        dropdownItem.section ? (
+                          <button
+                            key={dropdownItem.name}
+                            onClick={(e) => handleServiceClick(e, dropdownItem)}
+                            className="w-full text-left block py-2 text-sm text-[#0A2342] hover:text-[#FFD700] transition-colors duration-300"
+                          >
+                            {dropdownItem.name}
+                          </button>
+                        ) : (
+                          <Link
+                            key={dropdownItem.name}
+                            to={dropdownItem.href}
+                            className="block py-2 text-sm text-[#0A2342] hover:text-[#FFD700] transition-colors duration-300"
+                            onClick={() => {
+                              setActiveDropdown(null);
+                              setIsMenuOpen(false);
+                            }}
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        )
                       ))}
                     </div>
                   )}
