@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Target, Eye, Heart, Award, Building2, Users, Briefcase, TrendingUp, Shield, Clock, CheckCircle } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
@@ -10,7 +11,16 @@ import placeholderPortrait from '../assets/team-placeholder-portrait.jpg';
 import teamCultureImage from '../assets/team-culture-banner.jpg';
 
 const About = () => {
+  const [searchParams] = useSearchParams();
   const [selectedLeader, setSelectedLeader] = useState<any>(null);
+  const [activeTab, setActiveTab] = useState('who-we-are');
+
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'leadership' || tab === 'who-we-are') {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
 
   // Count-up hooks for impact stats
   const yearsCount = useCountUp({ end: 18, duration: 2000, suffix: '+' });
@@ -113,7 +123,7 @@ const About = () => {
       {/* Tabbed Content */}
       <section className="section-padding bg-background">
         <div className="container-custom">
-          <Tabs defaultValue="who-we-are" className="w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-16">
               <TabsTrigger value="who-we-are" className="text-base md:text-lg">Who We Are</TabsTrigger>
               <TabsTrigger value="leadership" className="text-base md:text-lg">Our Leadership</TabsTrigger>
